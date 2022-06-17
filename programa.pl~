@@ -25,26 +25,34 @@ distancia(A,B,C,D,E) :- posicion(A,B,X), posicion(C,D,Y),
     E is abs(X - Y).
 
 terceramayor(4).
-
-
 terceramenor(3).
+cuartaperfecta(5).
 
 acordemayor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
     terceramayor(X),terceramenor(Y).
 acordemenor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
     terceramenor(X),terceramayor(Y).
+primerainversionmayor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
+    terceramayor(X),cuartaperfecta(Y).
+primerainversionmenor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
+    terceramenor(X),cuartaperfecta(Y).
+segundainersionmayor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
+    cuartaperfecta(X),terceramayor(Y).
+segundainersionmenor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
+    cuartaperfecta(X),terceramenor(Y).
 triada(A,B,C,D,E,F):-acordemayor(A,B,C,D,E,F);
 acordemenor(A,B,C,D,E,F).
 
 %acorde(A,B,C,D,E,F):- terceraMayor(A,4).
 
-tipoacorde(mayor).
-tipoacorde(menor).
+posnotavalida(X,Y):- X > 11, Y is X - 12; Y is X.
 
-acordefundamental(A,mayor):-tipoacorde(mayor),nota(A,X), Y is X + 4, Z is Y + 3,
-    nota(B,Y), nota(C,Z),format('~w',[A]),format('~w',[B]), format('~w',[C]).
-acordefundamental(A,menor):-nota(A,X), Y is X + 3, Z is Y + 4,nota(B,Y),
-    nota(C,Z), format('~w',[A]),format('~w',[B]), format('~w',[C]).
+acordefundamental(A,mayor):-nota(A,X), Y is X + 4, Z is Y + 3, posnotavalida(Y,M),
+    posnotavalida(Z,N),nota(B,M), nota(C,N), O = A-B-C,format('~w',[O]).%,
+    %format('~w',[B]), format('~w',[C]).
+acordefundamental(A,menor):-nota(A,X), Y is X + 3, Z is Y + 4,posnotavalida(Y,M),
+    posnotavalida(Z,N),nota(B,M),nota(C,N), O = A-B-C,format('~w',[O]).%,
+    %format('~w',[B]), format('~w',[C]).
 
 
 
