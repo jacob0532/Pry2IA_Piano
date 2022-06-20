@@ -40,10 +40,12 @@ segundainersionmayor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
     cuartaperfecta(X),terceramayor(Y).
 segundainersionmenor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
     cuartaperfecta(X),terceramenor(Y).
-triada(A,B,C,D,E,F):-acordemayor(A,B,C,D,E,F);
-    acordemenor(A,B,C,D,E,F);primerainversionmayor(A,B,C,D,E,F);
-    primerainversionmenor(A,B,C,D,E,F);segundainersionmayor(A,B,C,D,E,F);
-    segundainersionmenor(A,B,C,D,E,F).
+triada(A,B,C,D,E,F):-acordemayor(A,B,C,D,E,F), O = mayor, format('~w',[O]);
+    acordemenor(A,B,C,D,E,F), O = menor, format('~w',[O]);
+    primerainversionmayor(A,B,C,D,E,F), O = primeramayor, format('~w',[O]);
+    primerainversionmenor(A,B,C,D,E,F), O = primeramenor, format('~w',[O]);
+    segundainersionmayor(A,B,C,D,E,F), O = segundamayor, format('~w',[O]);
+    segundainersionmenor(A,B,C,D,E,F), O = segundamenor, format('~w',[O]).
 
 %acorde(A,B,C,D,E,F):- terceraMayor(A,4).
 

@@ -41,7 +41,9 @@ segundainersionmayor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
 segundainersionmenor(A,B,C,D,E,F):-distancia(A,B,C,D,X),distancia(C,D,E,F,Y),
     cuartaperfecta(X),terceramenor(Y).
 triada(A,B,C,D,E,F):-acordemayor(A,B,C,D,E,F);
-acordemenor(A,B,C,D,E,F).
+    acordemenor(A,B,C,D,E,F);primerainversionmayor(A,B,C,D,E,F);
+    primerainversionmenor(A,B,C,D,E,F);segundainersionmayor(A,B,C,D,E,F);
+    segundainersionmenor(A,B,C,D,E,F).
 
 %acorde(A,B,C,D,E,F):- terceraMayor(A,4).
 
